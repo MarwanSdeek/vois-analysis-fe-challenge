@@ -3,12 +3,12 @@
 
 - [ ] init project
 	- [ ] use React + Typescript + Chart.js + Redux
-	- [ ] separate test files from source
-	- [ ] scripts for:
-		- [ ] testings
-		- [ ] linting/prettier
-		- [ ] starting the server
-		- [ ] compiling TS
+	- [X] separate test files from source
+	- [X] scripts for:
+		- [x] testings
+		- [X] linting/prettier
+		- [X] starting the server
+		- [ ] compiling TS and build
 - [ ] Features
 	- [ ] show loading screen while fetching `data.json`
 	- [ ] filter data using 3 dropdowns: country, camp & school (school has select all option)
