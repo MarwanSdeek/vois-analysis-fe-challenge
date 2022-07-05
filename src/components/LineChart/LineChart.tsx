@@ -8,10 +8,10 @@ import {
   Title,
   Tooltip,
   Legend,
-  TooltipItem,
-  ChartType,
 } from 'chart.js'
-import { CrosshairPlugin } from 'chartjs-plugin-crosshair'
+import CrosshairPlugin from 'chartjs-plugin-crosshair'
+
+import TooltipConfig from './TooltipConfig'
 
 ChartJS.register(
   CategoryScale,
@@ -71,41 +71,7 @@ const ChartDefaultOptions = {
   },
   plugins: {
     legend: { display: false },
-    tooltip: {
-      usePointStyle: true,
-      rtl: true,
-      textDirection: 'ltr',
-      padding: 10,
-      boxPadding: 60,
-      callbacks: {
-        title: () => '',
-        label: (tooltipItem: TooltipItem<ChartType>) => {
-          return tooltipItem.dataset.label || ''
-        },
-        afterBody: (tooltipItems: TooltipItem<ChartType>[]) => {
-          if (tooltipItems.length === 0 || !tooltipItems[0]) {
-            return ''
-          }
-
-          const { dataIndex, dataset, formattedValue } = tooltipItems[0]
-          const hasPrevious = dataIndex > 0
-          const isIncreased =
-            hasPrevious && dataset.data[dataIndex] > dataset.data[dataIndex - 1]
-          const increasePrecentage = !hasPrevious
-            ? 0
-            : Math.round(
-                ((dataset.data[dataIndex] - dataset.data[dataIndex - 1]) /
-                  dataset.data[dataIndex - 1]) *
-                  100
-              )
-          const afterText = `${isIncreased ? '+' : '-'} ${Math.abs(
-            increasePrecentage
-          )}% ${isIncreased ? '↑' : '↓'}`
-
-          return `${Math.round(formattedValue)} lessons ${afterText}`
-        },
-      },
-    },
+    tooltip: TooltipConfig,
     crosshair: {
       sync: {
         enabled: false,

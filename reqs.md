@@ -1,8 +1,8 @@
 
 ### Requirements
 
-- [ ] init project
-	- [ ] use React + Typescript + Chart.js + Redux
+- [X] init project
+	- [X] use React + Typescript + Chart.js + Redux
 	- [X] separate test files from source
 	- [X] scripts for:
 		- [x] testings
