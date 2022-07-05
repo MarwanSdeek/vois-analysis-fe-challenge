@@ -1,28 +1,5 @@
-import { Line } from 'react-chartjs-2'
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js'
-import CrosshairPlugin from 'chartjs-plugin-crosshair'
-
-import TooltipConfig from './TooltipConfig'
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  CrosshairPlugin
-)
+import Line from './RegisteredLineChartJs'
+import ChartDefaultOptions from './ChartDefaultOptions'
 
 type DataSet = {
   label: string
@@ -57,30 +34,6 @@ function LineChart(props: LineChartProps): JSX.Element {
       <Line options={ChartDefaultOptions} data={data} />
     </>
   )
-}
-
-const ChartDefaultOptions = {
-  responsive: true,
-  scales: {
-    x: {
-      grid: { display: false },
-    },
-    y: {
-      grid: { drawBorder: false },
-    },
-  },
-  plugins: {
-    legend: { display: false },
-    tooltip: TooltipConfig,
-    crosshair: {
-      sync: {
-        enabled: false,
-      },
-      zoom: {
-        enabled: false,
-      },
-    },
-  },
 }
 
 export default LineChart
