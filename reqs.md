@@ -8,7 +8,7 @@
 		- [x] testings
 		- [X] linting/prettier
 		- [X] starting the server
-		- [ ] compiling TS and build
+		- [X] compiling TS and build
 - [ ] Features
 	- [ ] show loading screen while fetching `data.json`
 	- [ ] filter data using 3 dropdowns: country, camp & school (school has select all option)
@@ -22,4 +22,4 @@
 - [ ] Extras
 	- [ ] add support for dark mode
 	- [ ] Multi-lingual Support
-	- [ ] E2E testing
+	- [X] E2E testing
