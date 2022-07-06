@@ -41,8 +41,6 @@ class AnalysisRecordsTransformer {
       return
     }
 
-    console.log(analysisRecords.length)
-
     analysisRecords.forEach((record) => {
       this.addCamp(record)
       this.addSchool(record)
