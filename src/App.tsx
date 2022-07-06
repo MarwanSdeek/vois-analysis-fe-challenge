@@ -1,15 +1,16 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
-import { Analysis, EntryDetails } from './pages'
+import { PagesLoader } from './pages'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Analysis />} />
-        <Route path="/details" element={<EntryDetails />} />
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <PagesLoader />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
 
