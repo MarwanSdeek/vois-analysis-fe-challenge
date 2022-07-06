@@ -10,7 +10,7 @@
 		- [X] starting the server
 		- [X] compiling TS and build
 - [ ] Features
-	- [ ] show loading screen while fetching `data.json`
+	- [X] show loading screen while fetching `data.json`
 	- [ ] filter data using 3 dropdowns: country, camp & school (school has select all option)
 	- [ ] show filtered data as line chart with:
 		- #lessons on y axis and months on x axis

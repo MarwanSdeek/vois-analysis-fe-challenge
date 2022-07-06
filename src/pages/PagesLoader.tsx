@@ -1,14 +1,9 @@
-import { useQuery } from 'react-query'
+import { useAnalysisRecordsQuery } from 'hooks'
 
 import PagesRoutes from './PagesRoutes'
-import { fetchAnalysisData } from 'api'
-import { AnalysisRecord } from 'models'
 
 function PagesLoader() {
-  const { isLoading, error } = useQuery<AnalysisRecord[], Error>(
-    'analysisRecords',
-    fetchAnalysisData
-  )
+  const { isLoading, error } = useAnalysisRecordsQuery()
 
   if (isLoading) return <p>Loading...</p>
 
