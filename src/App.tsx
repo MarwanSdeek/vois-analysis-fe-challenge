@@ -3,7 +3,13 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { PagesLoader } from './pages'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+})
 
 function App() {
   return (
