@@ -1,2 +1,1 @@
-export { default as Analysis } from './Analysis'
-export { default as EntryDetails } from './EntryDetails'
+export { default as PagesLoader } from './PagesLoader'
