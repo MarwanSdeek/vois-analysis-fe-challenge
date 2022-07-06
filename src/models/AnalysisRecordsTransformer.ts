@@ -45,7 +45,6 @@ class AnalysisRecordsTransformer {
 
     analysisRecords.forEach((record) => {
       this.addCamp(record)
-      this.addTotalLessons(record)
       this.addSchool(record)
       this.addLessons(record)
     })
@@ -84,13 +83,6 @@ class AnalysisRecordsTransformer {
     }
 
     monthsLessons[monthIndex] += lessons
-  }
-
-  private addTotalLessons(record: AnalysisRecord) {
-    const recordWithAllAsSchool: AnalysisRecord = { ...record }
-    recordWithAllAsSchool.school = 'All'
-    this.addSchool(recordWithAllAsSchool)
-    this.addLessons(recordWithAllAsSchool)
   }
 }
 
