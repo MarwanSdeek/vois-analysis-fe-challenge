@@ -1,30 +1,26 @@
-import { useQueryClient } from 'react-query'
+import { useSchoolsQuery } from 'queries'
+import { useAppSelector, useAppDispatch } from 'store/hooks'
+import { selectSchool, schoolChanged } from 'store/analysisFilter'
 
 import DropdownStyled from './DropdownStyled'
-import { getCampsKey } from 'cache/keys'
 
-type CampsDropdownProps = {
-  country: string
-}
+function SchoolsDropdown() {
+  const dispatch = useAppDispatch()
+  const selectedSchool = useAppSelector(selectSchool)
+  const schools = useSchoolsQuery()
 
-function CampsDropdown(props: CampsDropdownProps) {
-  const queryClient = useQueryClient()
-
-  const camps =
-    queryClient.getQueryData<string[]>(getCampsKey(props.country)) || []
-
-  function handleOnChange(newValue: string): void {
-    console.log(newValue)
+  function handleOnChange(newValue: string | undefined): void {
+    dispatch(schoolChanged(newValue))
   }
 
   return (
     <DropdownStyled
-      name="countries"
-      options={camps}
-      defaultOption={camps.at(0)}
+      name="schools"
+      options={schools}
+      defaultOption={selectedSchool}
       onChange={handleOnChange}
     />
   )
 }
 
-export default CampsDropdown
+export default SchoolsDropdown

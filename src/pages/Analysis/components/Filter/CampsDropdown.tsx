@@ -1,23 +1,25 @@
-import { useQueryClient } from 'react-query'
+import { useCampsQuery } from 'queries'
+import { useAppSelector, useAppDispatch } from 'store/hooks'
+import { selectCamp, campChanged } from 'store/analysisFilter'
 
 import DropdownStyled from './DropdownStyled'
-import { getCampsKey } from 'cache/keys'
 
-type CampsDropdownProps = {
-  country: string
-}
-
-function CampsDropdown(props: CampsDropdownProps) {
-  const queryClient = useQueryClient()
-  const camps =
-    queryClient.getQueryData<string[]>(getCampsKey(props.country)) || []
+function CampsDropdown() {
+  const dispatch = useAppDispatch()
+  const selectedCamp = useAppSelector(selectCamp)
+  const camps = useCampsQuery()
 
   function handleOnChange(newValue: string | undefined): void {
-    console.log(newValue)
+    dispatch(campChanged(newValue))
   }
 
   return (
-    <DropdownStyled name="camps" options={camps} onChange={handleOnChange} />
+    <DropdownStyled
+      name="camps"
+      options={camps}
+      defaultOption={selectedCamp}
+      onChange={handleOnChange}
+    />
   )
 }
 

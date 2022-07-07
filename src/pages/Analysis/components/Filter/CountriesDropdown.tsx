@@ -1,21 +1,23 @@
-import { useQueryClient } from 'react-query'
+import { useCountriesQuery } from 'queries'
+import { useAppSelector, useAppDispatch } from 'store/hooks'
+import { selectCountry, countryChanged } from 'store/analysisFilter'
 
 import DropdownStyled from './DropdownStyled'
-import { getCountriesKey } from 'cache/keys'
 
-function CountriesDropdown(props) {
-  const queryClient = useQueryClient()
-  const countries = queryClient.getQueryData<string[]>(getCountriesKey()) || []
+function CountriesDropdown() {
+  const dispatch = useAppDispatch()
+  const selectedCountry = useAppSelector(selectCountry)
+  const countries = useCountriesQuery()
 
-  function handleOnChange(newValue: string): void {
-    console.log(newValue)
-    props.onChange(newValue)
+  function handleOnChange(newValue: string | undefined): void {
+    dispatch(countryChanged(newValue))
   }
 
   return (
     <DropdownStyled
       name="countries"
       options={countries}
+      defaultOption={selectedCountry}
       onChange={handleOnChange}
     />
   )
