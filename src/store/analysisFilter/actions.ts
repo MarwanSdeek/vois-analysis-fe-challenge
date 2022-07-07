@@ -2,7 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 import AnalysisFilterState from './AnalysisFilterState'
 
-const updateSchool = (
+const schoolChanged = (
   state: AnalysisFilterState,
   action: PayloadAction<string | undefined>
 ) => {
@@ -11,28 +11,25 @@ const updateSchool = (
   return state
 }
 
-const updateCamp = (
+const campChanged = (
   state: AnalysisFilterState,
   action: PayloadAction<string | undefined>
 ) => {
   state.camp = action.payload
-  if (action.payload === undefined) {
-    state.school = undefined
-  }
+  state.school = undefined
+
   return state
 }
 
-const updateCountry = (
+const countryChanged = (
   state: AnalysisFilterState,
   action: PayloadAction<string | undefined>
 ) => {
   state.country = action.payload
-  if (action.payload === undefined) {
-    state.camp = undefined
-    state.school = undefined
-  }
+  state.camp = undefined
+  state.school = undefined
 
   return state
 }
 
-export { updateSchool, updateCamp, updateCountry }
+export { schoolChanged, campChanged, countryChanged }

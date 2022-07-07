@@ -7,9 +7,9 @@ const slice = createSlice({
   name: 'analysisFilter',
   initialState: INIT_STATE,
   reducers: {
-    updateSchool: actions.updateSchool,
-    updateCamp: actions.updateCamp,
-    updateCountry: actions.updateCountry,
+    schoolChanged: actions.schoolChanged,
+    campChanged: actions.campChanged,
+    countryChanged: actions.countryChanged,
   },
 })
 

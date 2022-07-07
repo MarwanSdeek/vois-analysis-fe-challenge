@@ -1,7 +1,7 @@
 import slice from './slice'
 
 export * from './selectors'
-export const { updateSchool, updateCamp, updateCountry } = slice.actions
+export const { schoolChanged, campChanged, countryChanged } = slice.actions
 
 const reducer = slice.reducer
 
