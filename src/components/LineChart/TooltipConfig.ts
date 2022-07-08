@@ -27,10 +27,18 @@ const getPointValueWithIncreasePercentage = (
   const current: number = getDatasetPointAsNumber(dataset.data[dataIndex]),
     previous: number = getDatasetPointAsNumber(dataset.data[dataIndex - 1])
 
+  if (previous === 0) {
+    return labelledValue
+  }
+
   const increasePercentage = getIncreasePercentage(previous, current)
+
   const sign = increasePercentage > 0 ? '+' : '-'
   const arrow = increasePercentage > 0 ? '↑' : '↓'
-  const afterText = `${sign} ${Math.abs(increasePercentage)}% ${arrow}`
+  const afterText =
+    increasePercentage != 0
+      ? `${sign} ${Math.abs(increasePercentage)}% ${arrow}`
+      : `0% -`
 
   return `${labelledValue} ${afterText}`
 }
