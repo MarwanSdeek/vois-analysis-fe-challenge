@@ -11,7 +11,7 @@
 		- [X] compiling TS and build
 - [ ] Features
 	- [X] show loading screen while fetching `data.json`
-	- [ ] filter data using 3 dropdowns: country, camp & school (school has select all option)
+	- [X] filter data using 3 dropdowns: country, camp & school (school has select all option)
 	- [ ] show filtered data as line chart with:
 		- #lessons on y axis and months on x axis
 		- on point click, navigate to new screen showing point data.
