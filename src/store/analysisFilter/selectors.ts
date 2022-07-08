@@ -1,9 +1,21 @@
 import { RootState } from '../store'
+import { SHOW_ALL } from 'queries/useSchoolsQuery'
 
 const selectSchool = (state: RootState) => state.analysisFilter.school
+
+const selectIsAllSchoolsSelected = (state: RootState) =>
+  state.analysisFilter.school === SHOW_ALL
 
 const selectCamp = (state: RootState) => state.analysisFilter.camp
 
 const selectCountry = (state: RootState) => state.analysisFilter.country
 
-export { selectSchool, selectCamp, selectCountry }
+const selectFilter = (state: RootState) => state.analysisFilter
+
+export {
+  selectSchool,
+  selectIsAllSchoolsSelected,
+  selectCamp,
+  selectCountry,
+  selectFilter,
+}
