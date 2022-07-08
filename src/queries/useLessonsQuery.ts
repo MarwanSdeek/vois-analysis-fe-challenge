@@ -10,12 +10,12 @@ import {
 
 type QueryResult = [QueryKey, number[]]
 
-type ResultRecord = {
+type LessonQueryRecord = {
   school?: string
   lessons: number[]
 }
 
-type LessonsQueryResult = ResultRecord[]
+type LessonsQueryResult = LessonQueryRecord[]
 
 const useLessonsQuery = (): LessonsQueryResult => {
   const queryClient = useQueryClient()
@@ -40,6 +40,6 @@ const useLessonsQuery = (): LessonsQueryResult => {
   return [{ school: filter.school, lessons }]
 }
 
-export type { LessonsQueryResult }
+export type { LessonsQueryResult, LessonQueryRecord }
 
 export default useLessonsQuery

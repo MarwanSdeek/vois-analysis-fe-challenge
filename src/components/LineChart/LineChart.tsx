@@ -3,7 +3,7 @@ import { Text } from 'components/basic'
 import Line from './RegisteredLineChartJs'
 import ChartDefaultOptions from './ChartDefaultOptions'
 
-type DataSet = {
+type Dataset = {
   label: string
   data: number[]
   color: string
@@ -11,14 +11,14 @@ type DataSet = {
 
 type LineChartProps = {
   labels: string[]
-  datasets: DataSet[]
+  datasets: Dataset[]
   title?: string
 }
 
 function LineChart(props: LineChartProps): JSX.Element {
   const data = {
     labels: props.labels,
-    datasets: props.datasets.map((dataset: DataSet) => ({
+    datasets: props.datasets.map((dataset: Dataset) => ({
       label: dataset.label,
       data: dataset.data,
       borderColor: dataset.color,
@@ -39,5 +39,7 @@ function LineChart(props: LineChartProps): JSX.Element {
     </>
   )
 }
+
+export type { Dataset }
 
 export default LineChart

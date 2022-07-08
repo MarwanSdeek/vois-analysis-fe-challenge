@@ -16,6 +16,7 @@
     "@stitches/react": "^1.2.8",
     "chart.js": "^3.8.0",
     "chartjs-plugin-crosshair": "^1.2.0",
+    "randomcolor": "^0.6.2",
     "react": "^18.0.0",
     "react-chartjs-2": "^4.2.0",
     "react-dom": "^18.0.0",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@testing-library/cypress": "^8.0.3",
     "@types/chartjs-plugin-crosshair": "^1.1.1",
+    "@types/randomcolor": "^0.5.6",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.3",
