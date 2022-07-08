@@ -1,23 +1,39 @@
+import { useNavigate } from 'react-router'
 import randomColor from 'randomcolor'
 
+import { useAppSelector } from 'store/hooks'
+import { selectFilter } from 'store/analysisFilter'
+
 import LineChart, { Dataset } from 'components/LineChart'
-import useLessonsQuery, {
-  LessonsQueryResult,
-  LessonQueryRecord,
-} from 'queries/useLessonsQuery'
+import useLessonsQuery, { LessonQueryRecord } from 'queries/useLessonsQuery'
 import { MONTHS } from 'utils/Months'
 import { capitalize } from 'utils/String'
 
 const LABELS = MONTHS.map(capitalize)
 
 function Chart() {
-  const lessons: LessonsQueryResult = useLessonsQuery()
+  const navigate = useNavigate()
+  const filter = useAppSelector(selectFilter)
+  const lessons: Dataset[] = useLessonsQuery().filter(notEmpty).map(asDataset)
+
+  function handleOnPointClick(index: number, datasetIndex: number): void {
+    const numberOfLessons = lessons[datasetIndex].data[index]
+
+    navigate('/details', {
+      state: {
+        ...filter,
+        school: lessons[datasetIndex].label,
+        lessons: numberOfLessons,
+      },
+    })
+  }
 
   return (
     <LineChart
       labels={LABELS}
-      datasets={lessons.filter(notEmpty).map(asDataset)}
+      datasets={lessons}
       title="No. of lessons"
+      onPointClick={handleOnPointClick}
     />
   )
 }
