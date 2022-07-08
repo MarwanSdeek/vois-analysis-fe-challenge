@@ -21,6 +21,9 @@ const ChartDefaultOptions = {
         enabled: false,
       },
     },
+    noDataText: {
+      text: 'Select a filter to display data...',
+    },
   },
 }
 
