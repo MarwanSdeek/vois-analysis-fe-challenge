@@ -4,6 +4,7 @@ import { Provider as ReduxProvider } from 'react-redux'
 
 import { PagesLoader } from './pages'
 import store from './store'
+import { globalStyles } from 'stitches.config'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,6 +15,8 @@ const queryClient = new QueryClient({
 })
 
 function App() {
+  globalStyles()
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReduxProvider store={store}>
