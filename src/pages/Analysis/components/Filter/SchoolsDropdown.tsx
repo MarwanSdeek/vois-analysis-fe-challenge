@@ -2,7 +2,7 @@ import { useSchoolsQuery } from 'queries'
 import { useAppSelector, useAppDispatch } from 'store/hooks'
 import { selectSchool, schoolChanged } from 'store/analysisFilter'
 
-import DropdownStyled from './DropdownStyled'
+import DropdownWithLabel from './DropdownWithLabel'
 
 function SchoolsDropdown() {
   const dispatch = useAppDispatch()
@@ -14,7 +14,8 @@ function SchoolsDropdown() {
   }
 
   return (
-    <DropdownStyled
+    <DropdownWithLabel
+      label="Select School"
       name="schools"
       options={schools}
       value={selectedSchool}

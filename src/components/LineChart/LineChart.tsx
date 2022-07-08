@@ -8,9 +8,9 @@ type DataSet = {
 }
 
 type LineChartProps = {
-  title: string
   labels: string[]
   datasets: DataSet[]
+  title?: string
 }
 
 function LineChart(props: LineChartProps): JSX.Element {

@@ -1,3 +1,4 @@
+import { styled } from 'stitches.config'
 import Flexbox from 'components/Flexbox'
 
 import CountriesDropdown from './CountriesDropdown'
@@ -6,12 +7,16 @@ import SchoolsDropdown from './SchoolsDropdown'
 
 function Filter() {
   return (
-    <Flexbox flow={{ '@sm': 'column' }} main="spaceAround">
+    <Container flow={{ '@sm': 'column' }} main="spaceBetween">
       <CountriesDropdown />
       <CampsDropdown />
       <SchoolsDropdown />
-    </Flexbox>
+    </Container>
   )
 }
+
+const Container = styled(Flexbox, {
+  marginTop: '$space$7',
+})
 
 export default Filter
