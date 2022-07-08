@@ -1,10 +1,12 @@
 import LineChart from 'components/LineChart'
 
+import Filter from './components/Filter'
+
 function Analysis() {
   return (
     <>
       <p>Analysis Chart</p>
-
+      <Filter />
       <LineChart labels={labels} datasets={datasets} title={'No of Lessons'} />
     </>
   )

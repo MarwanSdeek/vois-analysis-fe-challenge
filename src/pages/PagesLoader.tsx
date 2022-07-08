@@ -1,4 +1,4 @@
-import { useAnalysisRecordsQuery } from 'hooks'
+import { useAnalysisRecordsQuery } from 'queries'
 
 import PagesRoutes from './PagesRoutes'
 
