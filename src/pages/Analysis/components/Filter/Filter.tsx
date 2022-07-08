@@ -1,5 +1,5 @@
 import { styled } from 'stitches.config'
-import Flexbox from 'components/Flexbox'
+import { Flexbox } from 'components/basic'
 
 import CountriesDropdown from './CountriesDropdown'
 import CampsDropdown from './CampsDropdown'

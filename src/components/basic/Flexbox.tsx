@@ -11,6 +11,9 @@ const Flexbox = styled('div', {
       column: {
         flexDirection: 'column',
       },
+      columnReverse: {
+        flexDirection: 'column-reverse',
+      },
     },
     main: {
       center: {

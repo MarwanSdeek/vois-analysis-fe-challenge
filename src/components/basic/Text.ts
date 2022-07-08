@@ -15,6 +15,10 @@ const Text = styled('p', {
       },
       label: {
         fontSize: '$fontSize$1',
+
+        '@sm': {
+          fontSize: '$fontSize$2',
+        },
       },
     },
   },
