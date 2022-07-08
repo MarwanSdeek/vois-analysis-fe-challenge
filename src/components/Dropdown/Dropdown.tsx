@@ -9,18 +9,15 @@ type Option = {
 type DropdownProps = {
   name: string
   options: string[]
-  defaultOption?: string
+  value: string | undefined
   onChange?: (newVal: string | undefined) => void
 }
 
 function Dropdown(props: DropdownProps) {
-  const { options, defaultOption, ...restProps } = props
-  const mappedOptions = useMemo(() => options.map(createOption), [options])
+  const { options, value, ...restProps } = props
 
-  const mappedDefaultOption = useMemo(
-    () => createOption(defaultOption),
-    [defaultOption]
-  )
+  const mappedOptions = useMemo(() => options.map(createOption), [options])
+  const mappedValue = useMemo(() => createOption(value), [value])
 
   const handleChange = (newValue: OnChangeValue<Option, false>) => {
     props.onChange?.(newValue?.value)
@@ -29,8 +26,8 @@ function Dropdown(props: DropdownProps) {
   return (
     <Select
       {...restProps}
+      value={mappedValue}
       options={mappedOptions}
-      defaultValue={mappedDefaultOption}
       onChange={handleChange}
       isClearable={true}
     />

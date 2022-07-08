@@ -17,7 +17,7 @@ function CountriesDropdown() {
     <DropdownStyled
       name="countries"
       options={countries}
-      defaultOption={selectedCountry}
+      value={selectedCountry}
       onChange={handleOnChange}
     />
   )

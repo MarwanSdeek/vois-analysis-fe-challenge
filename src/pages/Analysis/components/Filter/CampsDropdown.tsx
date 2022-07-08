@@ -17,7 +17,7 @@ function CampsDropdown() {
     <DropdownStyled
       name="camps"
       options={camps}
-      defaultOption={selectedCamp}
+      value={selectedCamp}
       onChange={handleOnChange}
     />
   )

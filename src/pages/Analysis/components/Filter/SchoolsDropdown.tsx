@@ -17,7 +17,7 @@ function SchoolsDropdown() {
     <DropdownStyled
       name="schools"
       options={schools}
-      defaultOption={selectedSchool}
+      value={selectedSchool}
       onChange={handleOnChange}
     />
   )
