@@ -11,6 +11,8 @@ import {
 } from 'chart.js'
 import CrosshairPlugin from 'chartjs-plugin-crosshair'
 
+import NoDataPlugin from './NoDataPlugin'
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -19,7 +21,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  CrosshairPlugin
+  CrosshairPlugin,
+  NoDataPlugin
 )
 
 export default Line
