@@ -2,7 +2,7 @@ import { useCountriesQuery } from 'queries'
 import { useAppSelector, useAppDispatch } from 'store/hooks'
 import { selectCountry, countryChanged } from 'store/analysisFilter'
 
-import DropdownStyled from './DropdownStyled'
+import DropdownWithLabel from './DropdownWithLabel'
 
 function CountriesDropdown() {
   const dispatch = useAppDispatch()
@@ -14,7 +14,8 @@ function CountriesDropdown() {
   }
 
   return (
-    <DropdownStyled
+    <DropdownWithLabel
+      label="Select country"
       name="countries"
       options={countries}
       value={selectedCountry}

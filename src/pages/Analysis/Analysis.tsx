@@ -1,14 +1,16 @@
 import LineChart from 'components/LineChart'
+import { PageContainer, Text } from 'components/basic'
 
 import Filter from './components/Filter'
 
 function Analysis() {
   return (
-    <>
-      <p>Analysis Chart</p>
+    <PageContainer>
+      <Text size="title">Analysis Chart</Text>
+      <Text size="subTitle">Number of Lessons</Text>
       <Filter />
-      <LineChart labels={labels} datasets={datasets} title={'No of Lessons'} />
-    </>
+      <LineChart labels={labels} datasets={datasets} />
+    </PageContainer>
   )
 }
 

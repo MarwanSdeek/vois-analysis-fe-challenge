@@ -2,7 +2,7 @@ import { useCampsQuery } from 'queries'
 import { useAppSelector, useAppDispatch } from 'store/hooks'
 import { selectCamp, campChanged } from 'store/analysisFilter'
 
-import DropdownStyled from './DropdownStyled'
+import DropdownWithLabel from './DropdownWithLabel'
 
 function CampsDropdown() {
   const dispatch = useAppDispatch()
@@ -14,7 +14,8 @@ function CampsDropdown() {
   }
 
   return (
-    <DropdownStyled
+    <DropdownWithLabel
+      label="Select Camp"
       name="camps"
       options={camps}
       value={selectedCamp}

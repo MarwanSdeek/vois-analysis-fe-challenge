@@ -19,6 +19,9 @@ const Flexbox = styled('div', {
       spaceAround: {
         justifyContent: 'space-around',
       },
+      spaceBetween: {
+        justifyContent: 'space-between',
+      },
     },
     cross: {
       start: {

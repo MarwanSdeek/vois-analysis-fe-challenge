@@ -41,4 +41,6 @@ function createOption(val: string | undefined): Option {
   }
 }
 
+export type { DropdownProps }
+
 export default Dropdown
