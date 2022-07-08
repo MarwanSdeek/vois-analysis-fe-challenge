@@ -1,3 +1,5 @@
+import { Text } from 'components/basic'
+
 import Line from './RegisteredLineChartJs'
 import ChartDefaultOptions from './ChartDefaultOptions'
 
@@ -30,7 +32,9 @@ function LineChart(props: LineChartProps): JSX.Element {
 
   return (
     <>
-      <p>{props.title}</p>
+      <Text size="label" css={{ marginY: '$space$3', marginX: '$space$2' }}>
+        {props.title}
+      </Text>
       <Line options={ChartDefaultOptions} data={data} />
     </>
   )

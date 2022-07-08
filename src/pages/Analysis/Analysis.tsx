@@ -1,44 +1,47 @@
-import LineChart from 'components/LineChart'
-import { PageContainer, Text } from 'components/basic'
+import { styled } from 'stitches.config'
+import { PageContainer, Text, Flexbox, Container } from 'components/basic'
 
 import Filter from './components/Filter'
+import Chart from './components/Chart'
+import SideLegend from './components/SideLegend'
 
 function Analysis() {
   return (
     <PageContainer>
       <Text size="title">Analysis Chart</Text>
       <Text size="subTitle">Number of Lessons</Text>
+
       <Filter />
-      <LineChart labels={labels} datasets={datasets} />
+
+      <Flexbox flow={{ '@sm': 'column' }} css={{ marginTop: '$space$5' }}>
+        <ChartColumn>
+          <Chart />
+        </ChartColumn>
+
+        <SideLegendColumn>
+          <SideLegend />
+        </SideLegendColumn>
+      </Flexbox>
     </PageContainer>
   )
 }
 
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'Aug',
-  'Sep',
-  'Nov',
-  'Dec',
-]
+const ChartColumn = styled(Container, {
+  widthPer: 70,
+  marginRight: '$space$1',
 
-const datasets = [
-  {
-    label: 'Dataset 1',
-    data: labels.map(() => Math.random() * 100),
-    color: 'rgb(255, 99, 132)',
+  '@sm': { widthPer: 100, padding: 0, margin: 0 },
+})
+
+const SideLegendColumn = styled(Container, {
+  widthPer: 29,
+
+  '@sm': {
+    widthPer: 100,
+    padding: 0,
+    margin: 0,
+    marginTop: '$space$5',
   },
-  {
-    label: 'Dataset 2',
-    data: labels.map(() => Math.random() * 100),
-    color: 'rgb(53, 162, 235)',
-  },
-]
+})
 
 export default Analysis

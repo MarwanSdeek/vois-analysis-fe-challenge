@@ -15,7 +15,7 @@ function CountriesDropdown() {
 
   return (
     <DropdownWithLabel
-      label="Select country"
+      label="Select Country"
       name="countries"
       options={countries}
       value={selectedCountry}

@@ -19,6 +19,7 @@ export const {
       primary: '$black',
       secondary: '$yellow',
       bg: '$gray',
+      bg2: '$white',
     },
     space: {
       1: '0.25rem',
