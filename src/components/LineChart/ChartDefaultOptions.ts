@@ -1,3 +1,5 @@
+import { NO_DATA } from 'constants/messages'
+
 import TooltipConfig from './TooltipConfig'
 
 const ChartDefaultOptions = {
@@ -22,7 +24,7 @@ const ChartDefaultOptions = {
       },
     },
     noDataText: {
-      text: 'Select a filter to display data...',
+      text: `${NO_DATA} ...`,
     },
   },
 }
