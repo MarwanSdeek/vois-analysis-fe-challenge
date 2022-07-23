@@ -15,8 +15,8 @@
 	- [X] show filtered data as line chart with:
 		- [X] #lessons on y axis and months on x axis
 		- [X] on point click, navigate to new screen showing point data.
-	- [ ] chart metadata (on right) shows: 
-		- [] total number of lessons and each school number of lessons.
+	- [ ] chart legend (on right) shows: 
+		- [X] total number of lessons and each school number of lessons.
 		- [] each school acts as toggle to show/hide school data on the chart.
 	- [X] save state of filter while navigating from chart page to point details page
 - [ ] Extras
