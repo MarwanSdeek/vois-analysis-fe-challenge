@@ -1,25 +1,17 @@
 import { useQueryClient, QueryKey, QueryClient } from 'react-query'
 
+import { Lessons } from 'models'
 import { useAppSelector } from 'store/hooks'
 import {
   selectFilter,
   selectIsAllSchoolsSelected,
   selectIsFilterActive,
 } from 'store/analysisFilter'
-import {
-  getLessonsKey,
-  getAllLessonsForCampKey,
-  getSchoolFromLessonsKey,
-} from 'cache/keys'
+import { getLessonsKey, getAllLessonsForCampKey } from 'cache/keys'
 import AnalysisFilterState from 'store/analysisFilter/AnalysisFilterState'
 
-type QueryResult = [QueryKey, number[]]
-
-type LessonQueryRecord = {
-  school?: string
-  lessons: number[]
-}
-
+type LessonQueryRecord = Lessons
+type QueryResult = [QueryKey, LessonQueryRecord]
 type LessonsQueryResult = LessonQueryRecord[]
 
 const useLessonsQuery = (): LessonsQueryResult => {
@@ -33,25 +25,22 @@ const useLessonsQuery = (): LessonsQueryResult => {
   }
 
   if (isAllSchoolsSelected) {
-    return getAllLessonsPerSchoolForCamp(queryClient, filter)
+    return getAllLessonsForCamp(queryClient, filter)
   }
 
   return getLessonsForSchool(queryClient, filter)
 }
 
-function getAllLessonsPerSchoolForCamp(
+function getAllLessonsForCamp(
   queryClient: QueryClient,
   filter: AnalysisFilterState
 ): LessonsQueryResult {
-  const result: QueryResult[] = queryClient.getQueriesData<number[]>({
+  const result: QueryResult[] = queryClient.getQueriesData<LessonQueryRecord>({
     queryKey: getAllLessonsForCampKey(filter.country, filter.camp),
     exact: false,
   })
 
-  return result.map((r: QueryResult) => ({
-    school: getSchoolFromLessonsKey(r[0]),
-    lessons: r[1],
-  }))
+  return result.map(([, lessons]: QueryResult) => lessons)
 }
 
 function getLessonsForSchool(
@@ -59,9 +48,13 @@ function getLessonsForSchool(
   filter: AnalysisFilterState
 ): LessonsQueryResult {
   const lessonsKey = getLessonsKey(filter.country, filter.camp, filter.school)
-  const lessons = queryClient.getQueryData<number[]>(lessonsKey) || []
+  const Lessons = queryClient.getQueryData<LessonQueryRecord>(lessonsKey)
 
-  return [{ school: filter.school, lessons: lessons }]
+  if (!Lessons) {
+    return []
+  }
+
+  return [Lessons]
 }
 
 export type { LessonsQueryResult, LessonQueryRecord }

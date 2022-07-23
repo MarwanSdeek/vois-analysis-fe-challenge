@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router'
-import randomColor from 'randomcolor'
 
 import { useAppSelector } from 'store/hooks'
 import { selectFilter } from 'store/analysisFilter'
@@ -44,9 +43,9 @@ function notEmpty(resultRecord: LessonQueryRecord) {
 
 function asDataset(resultRecord: LessonQueryRecord): Dataset {
   return {
-    label: resultRecord.school || '',
-    data: resultRecord.lessons,
-    color: randomColor({ luminosity: 'dark' }),
+    label: resultRecord.school,
+    data: resultRecord.countPerMonth,
+    color: resultRecord.color,
   }
 }
 
