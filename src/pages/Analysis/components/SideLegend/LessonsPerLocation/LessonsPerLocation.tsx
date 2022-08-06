@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { styled } from 'stitches.config'
 import { Flexbox, Text } from 'components/basic'
 
+import Checkbox from './Checkbox'
+
 type LessonsPerLocationProps = {
   count: number
   location: string
@@ -26,13 +28,9 @@ function LessonsPerLocation(props: LessonsPerLocationProps) {
       {props.selectable && (
         <CheckboxCol>
           <Checkbox
-            type="checkbox"
             checked={isChecked}
             onChange={handleOnCheckboxChange}
-            css={{
-              borderColor: props.color,
-              ...(isChecked && { backgroundColor: props.color }),
-            }}
+            color={props.color}
           />
         </CheckboxCol>
       )}
@@ -81,27 +79,6 @@ const Lessons = styled(Text, {
 
 const Location = styled(Text, {
   fontSize: '$fontSize$1',
-})
-
-const Checkbox = styled('input', {
-  width: '$space$6',
-  height: '$space$6',
-  margin: '$space$1',
-  borderRadius: '50%',
-  border: '2px solid #295282',
-  outline: 'none',
-  appearance: 'none',
-  cursor: 'pointer',
-  transition: '0.5s',
-
-  variants: {
-    checked: {
-      true: {
-        boxShadow: 'inset 0px 0px 0px 5px #ffffff',
-        transition: '0.5s',
-      },
-    },
-  },
 })
 
 export default LessonsPerLocation
