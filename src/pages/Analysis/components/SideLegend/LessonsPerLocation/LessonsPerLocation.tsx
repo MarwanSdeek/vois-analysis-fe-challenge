@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import { styled } from 'stitches.config'
 import { Flexbox, Text } from 'components/basic'
@@ -34,7 +34,11 @@ function LessonsPerLocation(props: LessonsPerLocationProps) {
   }
 
   return (
-    <Div flow="row" css={{ color: props.color }} checked={isChecked}>
+    <Div
+      flow="row"
+      css={{ color: props.color }}
+      checked={props.selectable ? isChecked : undefined}
+    >
       {props.selectable && (
         <CheckboxCol>
           <Checkbox
