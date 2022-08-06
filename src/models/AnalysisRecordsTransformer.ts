@@ -1,4 +1,6 @@
-import { AnalysisRecord } from 'models'
+import randomColor from 'randomcolor'
+
+import { AnalysisRecord, Lessons } from 'models'
 import { getMonthIndex } from 'utils/Months'
 
 class AnalysisRecordsTransformer {
@@ -28,7 +30,19 @@ class AnalysisRecordsTransformer {
     )
   }
 
-  getLessons(country: string, camp: string, school: string): number[] {
+  getLessons(country: string, camp: string, school: string): Lessons {
+    return {
+      school: school,
+      countPerMonth: this.getLessonsCount(country, camp, school),
+      color: randomColor({ luminosity: 'dark' }),
+    }
+  }
+
+  private getLessonsCount(
+    country: string,
+    camp: string,
+    school: string
+  ): number[] {
     return Array.from(
       this.schoolsLessonsPerMonth
         .get(getSchoolKey(country, camp, school))

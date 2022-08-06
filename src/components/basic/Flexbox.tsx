@@ -1,5 +1,8 @@
 import { styled } from 'stitches.config'
 
+/**
+ * credit: https://dev.to/lexswed/creating-api-for-components-flexbox-layout-4cim
+ */
 const Flexbox = styled('div', {
   display: 'flex',
 

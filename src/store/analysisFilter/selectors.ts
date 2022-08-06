@@ -12,10 +12,15 @@ const selectCountry = (state: RootState) => state.analysisFilter.country
 
 const selectFilter = (state: RootState) => state.analysisFilter
 
+const selectIsFilterActive = (state: RootState): boolean =>
+  (selectCamp(state) && selectCountry(state) && selectSchool(state)) !==
+  undefined
+
 export {
   selectSchool,
   selectIsAllSchoolsSelected,
   selectCamp,
   selectCountry,
   selectFilter,
+  selectIsFilterActive,
 }

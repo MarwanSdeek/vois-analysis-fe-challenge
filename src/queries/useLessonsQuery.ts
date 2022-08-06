@@ -1,20 +1,17 @@
-import { QueryKey, useQueryClient } from 'react-query'
+import { useQueryClient, QueryKey, QueryClient } from 'react-query'
 
+import { Lessons } from 'models'
 import { useAppSelector } from 'store/hooks'
-import { selectFilter, selectIsAllSchoolsSelected } from 'store/analysisFilter'
 import {
-  getLessonsKey,
-  getAllLessonsForCampKey,
-  getSchoolFromLessonsKey,
-} from 'cache/keys'
+  selectFilter,
+  selectIsAllSchoolsSelected,
+  selectIsFilterActive,
+} from 'store/analysisFilter'
+import { getLessonsKey, getAllLessonsForCampKey } from 'cache/keys'
+import AnalysisFilterState from 'store/analysisFilter/AnalysisFilterState'
 
-type QueryResult = [QueryKey, number[]]
-
-type LessonQueryRecord = {
-  school?: string
-  lessons: number[]
-}
-
+type LessonQueryRecord = Lessons
+type QueryResult = [QueryKey, LessonQueryRecord]
 type LessonsQueryResult = LessonQueryRecord[]
 
 const useLessonsQuery = (): LessonsQueryResult => {
@@ -22,22 +19,42 @@ const useLessonsQuery = (): LessonsQueryResult => {
   const filter = useAppSelector(selectFilter)
   const isAllSchoolsSelected = useAppSelector(selectIsAllSchoolsSelected)
 
-  if (isAllSchoolsSelected) {
-    const result: QueryResult[] = queryClient.getQueriesData<number[]>({
-      queryKey: getAllLessonsForCampKey(filter.country, filter.camp),
-      exact: false,
-    })
-
-    return result.map((r: QueryResult) => ({
-      school: getSchoolFromLessonsKey(r[0]),
-      lessons: r[1],
-    }))
+  const isFilterActive = useAppSelector(selectIsFilterActive)
+  if (!isFilterActive) {
+    return []
   }
 
-  const lessonsKey = getLessonsKey(filter.country, filter.camp, filter.school)
-  const lessons = queryClient.getQueryData<number[]>(lessonsKey) || []
+  if (isAllSchoolsSelected) {
+    return getAllLessonsForCamp(queryClient, filter)
+  }
 
-  return [{ school: filter.school, lessons }]
+  return getLessonsForSchool(queryClient, filter)
+}
+
+function getAllLessonsForCamp(
+  queryClient: QueryClient,
+  filter: AnalysisFilterState
+): LessonsQueryResult {
+  const result: QueryResult[] = queryClient.getQueriesData<LessonQueryRecord>({
+    queryKey: getAllLessonsForCampKey(filter.country, filter.camp),
+    exact: false,
+  })
+
+  return result.map(([, lessons]: QueryResult) => lessons)
+}
+
+function getLessonsForSchool(
+  queryClient: QueryClient,
+  filter: AnalysisFilterState
+): LessonsQueryResult {
+  const lessonsKey = getLessonsKey(filter.country, filter.camp, filter.school)
+  const Lessons = queryClient.getQueryData<LessonQueryRecord>(lessonsKey)
+
+  if (!Lessons) {
+    return []
+  }
+
+  return [Lessons]
 }
 
 export type { LessonsQueryResult, LessonQueryRecord }

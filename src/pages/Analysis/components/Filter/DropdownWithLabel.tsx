@@ -17,7 +17,7 @@ function DropdownWithLabel(props: DropdownWithLabelProps) {
 
 const Container = styled(Flexbox, {
   widthPer: 31,
-  
+
   '@sm': {
     widthPer: 100,
     marginTop: '$space$1',

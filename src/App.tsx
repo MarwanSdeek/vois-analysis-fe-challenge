@@ -9,7 +9,7 @@ import { globalStyles } from 'stitches.config'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity,
+      staleTime: 4.5 * 60 * 1000,
     },
   },
 })
