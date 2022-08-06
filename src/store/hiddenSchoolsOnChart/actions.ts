@@ -6,11 +6,12 @@ const showSchool = (
   state: HiddenSchoolsOnChartState,
   action: PayloadAction<string>
 ) => {
-  if (isEmpty(action.payload)) {
+  const school = action.payload
+  if (isEmpty(school)) {
     return state
   }
 
-  const index = state.hiddenSchools.indexOf(action.payload)
+  const index = state.hiddenSchools.indexOf(school)
   if (index > -1) {
     state.hiddenSchools.splice(index, 1)
   }
@@ -22,17 +23,18 @@ const hideSchool = (
   state: HiddenSchoolsOnChartState,
   action: PayloadAction<string>
 ) => {
-  if (isEmpty(action.payload)) {
+  const school = action.payload
+  if (isEmpty(school)) {
     return state
   }
 
-  const index = state.hiddenSchools.indexOf(action.payload)
+  const index = state.hiddenSchools.indexOf(school)
   if (index > -1) {
-    console.warn(`attempt to add duplicate school: ${action.payload}`)
+    console.warn(`attempt to add duplicate school: ${school}`)
     return state
   }
 
-  state.hiddenSchools.push(action.payload)
+  state.hiddenSchools.push(school)
 
   return state
 }
