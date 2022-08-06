@@ -9,20 +9,17 @@ import NoResult from './NoResult'
 function SideLegend() {
   const records: LessonQueryRecord[] = useLessonsQuery()
   const camp = useAppSelector(selectCamp)
+  const hasTotal = records.length > 1 && camp !== undefined
 
   if (records.length === 0) {
     return <NoResult />
   }
 
-  const totalOrNull =
-    records.length === 1 ? (
-      <></>
-    ) : (
-      <LessonsPerLocation
-        location={camp}
-        lessons={getTotalForRecords(records)}
-      />
-    )
+  const totalOrNull = hasTotal ? (
+    <LessonsPerLocation location={camp} count={getTotalForRecords(records)} />
+  ) : (
+    <></>
+  )
 
   return (
     <Flexbox flow="column" cross="center">
@@ -32,8 +29,9 @@ function SideLegend() {
         <LessonsPerLocation
           key={record.school}
           location={record.school}
-          lessons={getTotal(record)}
+          count={getTotal(record)}
           color={record.color}
+          selectable={hasTotal}
         />
       ))}
     </Flexbox>
