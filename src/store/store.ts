@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import analysisFilterReducer from './analysisFilter'
+import hiddenSchoolsOnChartReducer from './hiddenSchoolsOnChart'
 
 const store = configureStore({
   reducer: {
     analysisFilter: analysisFilterReducer,
+    hiddenSchoolsOnChart: hiddenSchoolsOnChartReducer,
   },
 })
 

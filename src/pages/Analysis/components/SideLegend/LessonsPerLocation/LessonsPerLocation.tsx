@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { styled } from 'stitches.config'
 import { Flexbox, Text } from 'components/basic'
+import { useAppDispatch } from 'store/hooks'
+import { showSchool, hideSchool } from 'store/hiddenSchoolsOnChart'
 
 import Checkbox from './Checkbox'
 
@@ -14,13 +16,22 @@ type LessonsPerLocationProps = {
 
 function LessonsPerLocation(props: LessonsPerLocationProps) {
   const [isChecked, setIsChecked] = useState(true)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (isChecked) {
+      dispatch(showSchool(props.location))
+    } else {
+      dispatch(hideSchool(props.location))
+    }
+  }, [isChecked, dispatch, props.location])
 
   if (!hasLocation(props)) {
     return <></>
   }
 
   function handleOnCheckboxChange() {
-    setIsChecked((isChecked) => !isChecked)
+    setIsChecked((prev) => !prev)
   }
 
   return (
