@@ -18,20 +18,19 @@ function LessonsPerLocation(props: LessonsPerLocationProps) {
   const [isChecked, setIsChecked] = useState(true)
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    if (isChecked) {
-      dispatch(showSchool(props.location))
-    } else {
-      dispatch(hideSchool(props.location))
-    }
-  }, [isChecked, dispatch, props.location])
-
   if (!hasLocation(props)) {
     return <></>
   }
 
   function handleOnCheckboxChange() {
-    setIsChecked((prev) => !prev)
+    const newIsChecked = !isChecked
+    setIsChecked(newIsChecked)
+
+    if (newIsChecked) {
+      dispatch(showSchool(props.location))
+    } else {
+      dispatch(hideSchool(props.location))
+    }
   }
 
   return (
