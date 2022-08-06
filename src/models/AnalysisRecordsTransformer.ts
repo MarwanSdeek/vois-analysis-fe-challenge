@@ -34,7 +34,7 @@ class AnalysisRecordsTransformer {
     return {
       school: school,
       countPerMonth: this.getLessonsCount(country, camp, school),
-      color: randomColor(),
+      color: randomColor({ luminosity: 'dark' }),
     }
   }
 
