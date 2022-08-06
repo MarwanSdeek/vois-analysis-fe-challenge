@@ -27,7 +27,7 @@ function SideLegend() {
 
       {records.map((record) => (
         <LessonsPerLocation
-          key={record.school}
+          key={`${record.school}-${hasTotal.toString()}`}
           location={record.school}
           count={getTotal(record)}
           color={record.color}
