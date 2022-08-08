@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import Select, { OnChangeValue } from 'react-select'
 
 type Option = {
@@ -11,22 +11,29 @@ type DropdownProps = {
   options: string[]
   value: string | undefined
   onChange?: (newVal: string | undefined) => void
+  classNamePrefix?: string
 }
 
 function Dropdown(props: DropdownProps) {
   const { options, value, ...restProps } = props
-
+  const [selectedValue, setSelectedValue] = useState<Option | null>(
+    getValue(value)
+  )
   const mappedOptions = useMemo(() => options.map(createOption), [options])
-  const mappedValue = useMemo(() => createOption(value), [value])
 
   const handleChange = (newValue: OnChangeValue<Option, false>) => {
     props.onChange?.(newValue?.value)
+    setSelectedValue(getValue(newValue?.value))
   }
+
+  useEffect(() => {
+    setSelectedValue(getValue(props.value))
+  }, [props.value])
 
   return (
     <Select
       {...restProps}
-      value={mappedValue}
+      value={selectedValue}
       options={mappedOptions}
       onChange={handleChange}
       isClearable={true}
@@ -34,10 +41,14 @@ function Dropdown(props: DropdownProps) {
   )
 }
 
-function createOption(val: string | undefined): Option {
+function getValue(value: string | undefined | null) {
+  return value ? createOption(value) : null
+}
+
+function createOption(val: string): Option {
   return {
-    label: val || '',
-    value: val || '',
+    label: val,
+    value: val,
   }
 }
 
