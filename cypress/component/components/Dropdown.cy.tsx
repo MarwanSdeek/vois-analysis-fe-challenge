@@ -1,4 +1,4 @@
-import Dropdown from '../../../../src/components/Dropdown'
+import Dropdown from '../../../src/components/Dropdown'
 
 describe('Dropdown', () => {
 	it('mount', () => {
