@@ -19,6 +19,8 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+// should be changed to cypress/react18 to fix warnings for React 18 but it's still in development
+// ref: https://github.com/cypress-io/cypress/issues/23081#issuecomment-1204553702
 import { mount } from 'cypress/react'
 
 // Augment the Cypress namespace to include type definitions for
