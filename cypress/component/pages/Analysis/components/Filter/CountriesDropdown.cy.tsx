@@ -1,9 +1,8 @@
 import { QueryClient } from 'react-query'
 
 import CountriesDropdown from '../../../../../../src/pages/Analysis/components/Filter/CountriesDropdown'
-import { DEFAULT_CLASS_NAME_PREFIX } from '../../../../../../src/components/Dropdown'
-import { getCountriesKey } from '../../../../../../src/cache/keys'
 import store from '../../../../../../src/store'
+import { getCountriesKey } from '../../../../../../src/cache/keys'
 import { selectCountry, countryChanged } from '../../../../../../src/store/analysisFilter'
 
 import { DropdownUtils } from '../../../../components/Dropdown.cy'
@@ -75,9 +74,7 @@ describe('CountriesDropdown', () => {
 	})
 })
 
-const Comp = () => (
-	<CountriesDropdown />
-)
+const Comp = () => (<CountriesDropdown />)
 
 const COUNTRIES = ['country1', 'country2', 'country3']
 
