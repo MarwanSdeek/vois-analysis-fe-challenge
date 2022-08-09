@@ -11,7 +11,7 @@ describe('App', () => {
 			.should('be.visible')
 			.should('have.text', 'Loading...')
 
-		cy.wait(500)
+		cy.wait(2000)
 
 		cy.getByTestId('analysis-page')
 			.should('be.visible')
