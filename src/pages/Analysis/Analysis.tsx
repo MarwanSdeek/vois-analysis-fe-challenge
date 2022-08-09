@@ -7,7 +7,7 @@ import SideLegend from './components/SideLegend'
 
 function Analysis() {
   return (
-    <PageContainer>
+    <PageContainer data-testid="analysis-page">
       <Text size="title">Analysis Chart</Text>
       <Text size="subTitle">Number of Lessons</Text>
 

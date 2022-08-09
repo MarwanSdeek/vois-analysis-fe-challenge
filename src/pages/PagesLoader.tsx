@@ -5,7 +5,7 @@ import PagesRoutes from './PagesRoutes'
 function PagesLoader() {
   const { isLoading, error } = useAnalysisRecordsQuery()
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <p data-testid="loader">Loading...</p>
 
   if (error) return <p>An error has occurred: {error.message}</p>
 
