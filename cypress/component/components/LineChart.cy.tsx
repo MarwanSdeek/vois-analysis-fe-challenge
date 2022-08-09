@@ -24,7 +24,7 @@ describe('LineChart', () => {
 
 		cy.viewport(TEST_POINT.viewport.width, TEST_POINT.viewport.height)
 		// wait till chart is drawn
-		cy.wait(500)
+		cy.wait(1000)
 		cy.getByTestId('lineChart-container').click(TEST_POINT.click.x, TEST_POINT.click.y)
 
 		cy.get('@onPointClick').should('have.been.calledOnce')
