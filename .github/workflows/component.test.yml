@@ -1,4 +1,4 @@
-name: Components tests
+name: Component tests
 on:
   workflow_dispatch:
   pull_request:
@@ -14,7 +14,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: npm run test
-          browser: chrome
-          headless: true
-          record: false
+          install: false
+          component: true
