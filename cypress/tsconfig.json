@@ -7,11 +7,14 @@
 		],
 		"types": [
 			"cypress",
-			"@testing-library/cypress"
+			"@testing-library/cypress",
+			"./support/commands"
 		],
-		"baseUrl": "./"
+		"baseUrl": "./",
+		"jsx": "react-jsx"
 	},
 	"include": [
-		"**/*.ts"
+		"**/*.ts",
+		"**/*.tsx"
 	]
 }
