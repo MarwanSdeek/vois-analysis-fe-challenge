@@ -6,19 +6,20 @@ import { getCountriesKey } from '../../../../../../src/cache/keys'
 import store from '../../../../../../src/store'
 import { selectCountry, countryChanged } from '../../../../../../src/store/analysisFilter'
 
+import { DropdownUtils } from '../../../../components/Dropdown.cy'
+
 describe('CountriesDropdown', () => {
 	it('mount', () => {
 		cy.mountWithReduxAndQuery(<Comp />)
 
-		cy.get('input[name="countries')
-			.should('exist')
+		cy.get('input[name="countries"]').should('exist')
+		DropdownUtils.getDropdown().should('be.visible')
 	})
 
 	it('has title', () => {
 		cy.mountWithReduxAndQuery(<Comp />)
 
-		cy.get('p')
-			.should('have.text', 'Select Country')
+		cy.get('p').should('have.text', 'Select Country')
 	})
 
 	it('shows countries in queryClient as options', () => {
@@ -26,18 +27,15 @@ describe('CountriesDropdown', () => {
 			queryClient: getQueryClient()
 		})
 
-		cy.get(getSelector('dropdown-indicator')).click()
+		DropdownUtils.getOpenDropdownBtn().click()
+		DropdownUtils.getOptionsList().should('be.visible')
 
-		cy.get(getSelector('menu-list'))
-			.should('be.visible')
-
-		cy.get(getSelector('option'))
-			.should('have.length', COUNTRIES.length)
+		DropdownUtils.getOptions().should('have.length', COUNTRIES.length)
 
 		for (let i = 0; i < COUNTRIES.length; i++) {
 			const country = COUNTRIES[i];
 
-			cy.get(getSelector('option'))
+			DropdownUtils.getOptions()
 				.eq(i)
 				.should('have.text', country)
 		}
@@ -52,8 +50,7 @@ describe('CountriesDropdown', () => {
 			queryClient: getQueryClient()
 		})
 
-		cy.get(getSelector('value-container'))
-			.should('have.text', selectedCountry)
+		DropdownUtils.getValue().should('have.text', selectedCountry)
 	})
 
 	it('updates store when selected value changed', () => {
@@ -65,20 +62,18 @@ describe('CountriesDropdown', () => {
 		const selectedCountryIndex = 1;
 		const selectedCountry = COUNTRIES[selectedCountryIndex]
 
-		cy.get(getSelector('dropdown-indicator')).click()
-		cy.get(getSelector('option'))
+		DropdownUtils.getOpenDropdownBtn().click()
+		DropdownUtils.getOptions()
 			.eq(selectedCountryIndex)
 			.click()
 
-		cy.get(getSelector('value-container'))
+		DropdownUtils.getValue()
 			.should('have.text', selectedCountry)
 			.should(() => {
 				expect(selectCountry(store.getState())).to.be.equal(selectedCountry)
 			})
 	})
 })
-
-const getSelector = (className) => (`.${DEFAULT_CLASS_NAME_PREFIX}__${className}`)
 
 const Comp = () => (
 	<CountriesDropdown />

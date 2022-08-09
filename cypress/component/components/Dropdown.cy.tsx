@@ -4,8 +4,7 @@ describe('Dropdown', () => {
 	it('mount', () => {
 		cy.mount(<Comp value={''} onChange='' />)
 
-		cy.get(getSelector('control'))
-			.should('be.visible')
+		utils.getDropdown().should('be.visible')
 	})
 
 	it('display value', () => {
@@ -13,17 +12,15 @@ describe('Dropdown', () => {
 
 		cy.mount(<Comp value={value} onChange={DO_NOTHING} />)
 
-		cy.get(getSelector('value-container'))
-			.should('have.text', value)
+		utils.getValue().should('have.text', value)
 	})
 
 	it('display options on open dropdown button click', () => {
 		cy.mount(<Comp value={null} onChange={DO_NOTHING} />)
 
-		cy.get(getSelector('dropdown-indicator')).click()
+		utils.getOpenDropdownBtn().click()
 
-		cy.get(getSelector('menu-list'))
-			.should('be.visible')
+		utils.getOptionsList().should('be.visible')
 	})
 
 	it('display new value after selecting an option from the dropdown', () => {
@@ -31,18 +28,14 @@ describe('Dropdown', () => {
 
 		cy.mount(<Comp value={value} onChange={DO_NOTHING} />)
 
-		cy.get(getSelector('value-container'))
-			.should('have.text', value)
+		utils.getValue().should('have.text', value)
 
 		const newSelectedOptionIndex = 2;
 
-		cy.get(getSelector('dropdown-indicator')).click()
-		cy.get(getSelector('option'))
-			.eq(newSelectedOptionIndex)
-			.click()
+		utils.getOpenDropdownBtn().click()
+		utils.getOptions().eq(newSelectedOptionIndex).click()
 
-		cy.get(getSelector('value-container'))
-			.should('have.text', OPTIONS[newSelectedOptionIndex])
+		utils.getValue().should('have.text', OPTIONS[newSelectedOptionIndex])
 	})
 
 	it('show placeholder on clear button clicked', () => {
@@ -50,26 +43,23 @@ describe('Dropdown', () => {
 
 		cy.mount(<Comp value={value} onChange={DO_NOTHING} />)
 
-		cy.get(getSelector('clear-indicator')).click()
+		utils.getClearBtn().click()
 
-		cy.get(getSelector('value-container'))
-			.should('have.text', DEFAULT_PLACEHOLDER)
+		utils.getValue().should('have.text', utils.DEFAULT_PLACEHOLDER)
 	})
 
 	describe('search', () => {
 		it('show options matching search', () => {
 			cy.mount(<Comp value={null} onChange={DO_NOTHING} />)
 
-			cy.get(getSelector('control')).type('another')
-			cy.get(getSelector('option'))
-				.should('have.length', 2)
+			utils.getDropdown().type('another')
+			utils.getOptions().should('have.length', 2)
 
-			cy.get(getSelector('control')).type('option')
-			cy.get(getSelector('option'))
-				.should('have.length', 4)
+			utils.getDropdown().type('option')
+			utils.getOptions().should('have.length', 4)
 
-			cy.get(getSelector('control')).type('extraOption')
-			cy.get(getSelector('option'))
+			utils.getDropdown().type('extraOption')
+			utils.getOptions()
 				.should('have.length', 1)
 				.should('have.text', OPTIONS[5])
 		})
@@ -77,12 +67,10 @@ describe('Dropdown', () => {
 		it('show no options msg when no match', () => {
 			cy.mount(<Comp value={null} onChange={DO_NOTHING} />)
 
-			cy.get(getSelector('control')).type('not an option')
+			utils.getDropdown().type('not an option')
 
-			cy.get(getSelector('option'))
-				.should('have.length', 0)
-			cy.get(getSelector('menu-notice--no-options'))
-				.should('have.text', DEFAULT_NO_OPTIONS_MSG)
+			utils.getOptions().should('have.length', 0)
+			utils.getDropdownEmptyMsg().should('have.text', utils.DEFAULT_NO_OPTIONS)
 		})
 	})
 
@@ -93,8 +81,8 @@ describe('Dropdown', () => {
 			cy.mount(<Comp value={null} onChange={onChangeSpy} />)
 
 			const newSelectedOptionIndex = 4;
-			cy.get(getSelector('dropdown-indicator')).click()
-			cy.get(getSelector('option'))
+			utils.getOpenDropdownBtn().click()
+			utils.getOptions()
 				.eq(newSelectedOptionIndex)
 				.click()
 
@@ -107,13 +95,9 @@ describe('Dropdown', () => {
 
 			cy.mount(<Comp value={null} onChange={onChangeSpy} />)
 
-			const newSelectedOptionIndex = 4;
-			cy.get(getSelector('dropdown-indicator')).click()
-			cy.get(getSelector('option'))
-				.eq(4)
-				.click()
-
-			cy.get(getSelector('clear-indicator')).click()
+			utils.getOpenDropdownBtn().click()
+			utils.getOptions().eq(4).click()
+			utils.getClearBtn().click()
 
 			cy.get('@onChange').should('have.callCount', 2)
 			cy.get('@onChange').should('have.been.calledWith', undefined)
@@ -127,18 +111,26 @@ const Comp = ({ value, onChange }) => (
 		options={OPTIONS}
 		onChange={onChange}
 		value={value}
-		classNamePrefix={CLASS_PREFIX}
+		classNamePrefix={DEFAULT_CLASS_NAME_PREFIX}
 	/>
 )
 
 const OPTIONS = ['option1', 'option2', 'option3', 'Another1', 'Another2', 'extraOption']
 
-const CLASS_PREFIX = DEFAULT_CLASS_NAME_PREFIX
-
 const DO_NOTHING = () => true
 
-const getSelector = (className) => (`.${CLASS_PREFIX}__${className}`)
+const getSelector = (className: string) => (`.${DEFAULT_CLASS_NAME_PREFIX}__${className}`)
 
-const DEFAULT_PLACEHOLDER = 'Select...'
+const utils = {
+	getClearBtn: () => cy.get(getSelector('clear-indicator')),
+	getDropdown: () => cy.get(getSelector('control')),
+	getDropdownEmptyMsg: () => cy.get(getSelector('menu-notice--no-options')),
+	getValue: () => cy.get(getSelector('value-container')),
+	getOpenDropdownBtn: () => cy.get(getSelector('dropdown-indicator')),
+	getOptionsList: () => cy.get(getSelector('menu-list')),
+	getOptions: () => cy.get(getSelector('option')),
+	DEFAULT_PLACEHOLDER: 'Select...',
+	DEFAULT_NO_OPTIONS: 'No options',
+}
 
-const DEFAULT_NO_OPTIONS_MSG = 'No options'
+export { utils as DropdownUtils }
