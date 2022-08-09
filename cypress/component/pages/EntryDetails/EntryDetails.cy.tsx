@@ -1,7 +1,6 @@
 import EntryDetails from '../../../../src/pages/EntryDetails'
-import { useLocation } from 'react-router'
 
-describe('LineChart', () => {
+describe('EntryDetails page', () => {
 	it('mount', () => {
 		cy.mountWithRouter(<Comp />)
 
@@ -33,7 +32,7 @@ describe('LineChart', () => {
 	})
 })
 
-const Comp = (props) => (
+const Comp = () => (
 	<div data-testid='page'>
 		<EntryDetails />
 	</div>
