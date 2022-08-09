@@ -1,10 +1,19 @@
 describe('App', () => {
-	it('increments the counter', () => {
-		cy.visit('/');
-		cy.findByRole('button', { name: /count is:/i }).click()
-		cy.findByRole('button', { name: /count is:/i }).should(
-			'contain',
-			'count is: 1'
-		)
+
+	beforeEach(() => {
+		cy.visit('/')
+	})
+
+	it('mount', () => { })
+
+	it('shows Loader', () => {
+		cy.getByTestId('loader')
+			.should('be.visible')
+			.should('have.text', 'Loading...')
+
+		cy.wait(2000)
+
+		cy.getByTestId('analysis-page')
+			.should('be.visible')
 	})
 });
