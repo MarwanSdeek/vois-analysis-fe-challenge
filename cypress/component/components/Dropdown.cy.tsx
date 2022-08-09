@@ -1,4 +1,4 @@
-import Dropdown from '../../../src/components/Dropdown'
+import Dropdown, { DEFAULT_CLASS_NAME_PREFIX } from '../../../src/components/Dropdown'
 
 describe('Dropdown', () => {
 	it('mount', () => {
@@ -95,13 +95,13 @@ describe('Dropdown', () => {
 			const newSelectedOptionIndex = 4;
 			cy.get(getSelector('dropdown-indicator')).click()
 			cy.get(getSelector('option'))
-				.eq(4)
+				.eq(newSelectedOptionIndex)
 				.click()
 
 			cy.get('@onChange').should('have.been.calledOnce')
 			cy.get('@onChange').should('have.been.calledWith', OPTIONS[newSelectedOptionIndex])
 		})
-		
+
 		it('calls OnChange with undefined when cleared', () => {
 			const onChangeSpy = cy.spy().as('onChange')
 
@@ -112,7 +112,7 @@ describe('Dropdown', () => {
 			cy.get(getSelector('option'))
 				.eq(4)
 				.click()
-		
+
 			cy.get(getSelector('clear-indicator')).click()
 
 			cy.get('@onChange').should('have.callCount', 2)
@@ -133,7 +133,7 @@ const Comp = ({ value, onChange }) => (
 
 const OPTIONS = ['option1', 'option2', 'option3', 'Another1', 'Another2', 'extraOption']
 
-const CLASS_PREFIX = 'react-select'
+const CLASS_PREFIX = DEFAULT_CLASS_NAME_PREFIX
 
 const DO_NOTHING = () => true
 

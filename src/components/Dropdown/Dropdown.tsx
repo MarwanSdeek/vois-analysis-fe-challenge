@@ -15,7 +15,13 @@ type DropdownProps = {
 }
 
 function Dropdown(props: DropdownProps) {
-  const { options, value, ...restProps } = props
+  const {
+    options,
+    value,
+    classNamePrefix = DEFAULT_CLASS_NAME_PREFIX,
+    ...restProps
+  } = props
+
   const [selectedValue, setSelectedValue] = useState<Option | null>(
     getValue(value)
   )
@@ -37,6 +43,7 @@ function Dropdown(props: DropdownProps) {
       options={mappedOptions}
       onChange={handleChange}
       isClearable={true}
+      classNamePrefix={classNamePrefix}
     />
   )
 }
@@ -52,6 +59,10 @@ function createOption(val: string): Option {
   }
 }
 
+const DEFAULT_CLASS_NAME_PREFIX = 'react-select'
+
 export type { DropdownProps }
+
+export { DEFAULT_CLASS_NAME_PREFIX }
 
 export default Dropdown
