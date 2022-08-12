@@ -6,7 +6,7 @@ import createCacheInitializer from '../../../../../../src/cache/createCacheIniti
 
 import { DropdownUtils } from '../../../../components/Dropdown.cy'
 
-describe('CountriesDropdown', () => {
+describe('Filter', () => {
 	it('mount', () => {
 		cy.mountWithReduxAndQuery(<Comp />)
 
@@ -15,7 +15,7 @@ describe('CountriesDropdown', () => {
 		cy.get('input[name="schools"]').should('exist')
 	})
 
-	it.only('camps and schools are cleared when country changed', () => {
+	it('camps and schools are cleared when country changed', () => {
 		cy.mountWithReduxAndQuery(<Comp />, {
 			reduxStore: store,
 			queryClient: getQueryClient()
