@@ -59,8 +59,6 @@ const DATASETS: Dataset[] = [
 ]
 const TITLE = 'Chart Title'
 
-const DO_NOTHING = () => true
-
 const TEST_POINT = {
 	viewport: {
 		width: 500,
