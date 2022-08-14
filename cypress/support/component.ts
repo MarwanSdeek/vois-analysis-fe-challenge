@@ -30,6 +30,16 @@ declare global {
         component: React.ReactNode,
         options?: MountOptions & { reduxStore?: EnhancedStore<RootState> }
       ): Cypress.Chainable<MountReturn>;
+      
+      /**
+       * Mounts a React node
+       * @param component React Node to mount
+       * @param options Additional options to pass into mount
+       */
+       mountWithAll(
+        component: React.ReactNode,
+        options?: MountOptions & { reduxStore?: EnhancedStore<RootState>, routerProps?: MemoryRouterProps }
+      ): Cypress.Chainable<MountReturn>;
     }
   }
 }

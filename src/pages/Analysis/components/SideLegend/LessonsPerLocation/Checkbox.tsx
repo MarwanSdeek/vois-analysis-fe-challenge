@@ -1,22 +1,33 @@
-import React from 'react'
+import { useState } from 'react'
 
 import { styled } from 'stitches.config'
 
 type CheckboxProps = {
-  checked?: boolean
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  initial?: boolean
+  onChange?: (newValue: boolean) => void
   color?: string
 }
 
 function Checkbox(props: CheckboxProps) {
+  const [isChecked, setIsChecked] = useState(props.initial || false)
+
+  function handleOnChange() {
+    const newValue = !isChecked
+
+    setIsChecked(newValue)
+    props.onChange?.(newValue)
+  }
+
   return (
     <CheckboxStyled
       type="checkbox"
-      checked={props.checked}
-      onChange={props.onChange}
+      checked={isChecked}
+      // use another attribute, as stitches removes variant ones
+      isChecked={isChecked}
+      onChange={handleOnChange}
       css={{
         borderColor: props.color,
-        ...(props.checked && { backgroundColor: props.color }),
+        ...(isChecked && { backgroundColor: props.color }),
       }}
     />
   )
@@ -34,8 +45,9 @@ const CheckboxStyled = styled('input', {
   transition: '0.5s',
 
   variants: {
-    checked: {
+    isChecked: {
       true: {
+        backgroundColor: '#295282',
         boxShadow: 'inset 0px 0px 0px 5px #ffffff',
         transition: '0.5s',
       },

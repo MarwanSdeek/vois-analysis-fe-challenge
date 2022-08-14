@@ -22,7 +22,7 @@ function SideLegend() {
   )
 
   return (
-    <Flexbox flow="column" cross="center">
+    <Flexbox flow="column" cross="center" data-testid="sideLegend">
       {totalOrNull}
 
       {records.map((record) => (
