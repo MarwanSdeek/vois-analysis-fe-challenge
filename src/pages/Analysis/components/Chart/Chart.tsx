@@ -33,12 +33,14 @@ function Chart() {
   }
 
   return (
-    <LineChart
-      labels={LABELS}
-      datasets={lessons}
-      title="No. of lessons"
-      onPointClick={handleOnPointClick}
-    />
+    <div data-testid="chart">
+      <LineChart
+        labels={LABELS}
+        datasets={lessons}
+        title="No. of lessons"
+        onPointClick={handleOnPointClick}
+      />
+    </div>
   )
 }
 
