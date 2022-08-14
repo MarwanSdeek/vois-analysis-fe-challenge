@@ -24,10 +24,10 @@ function LessonsPerLocation(props: LessonsPerLocationProps) {
     return <></>
   }
 
-  function handleOnCheckboxChange(isChecked: boolean) {
-    setIsChecked(isChecked)
+  function handleOnCheckboxChange(newIsChecked: boolean) {
+    setIsChecked(newIsChecked)
 
-    if (isChecked) {
+    if (newIsChecked) {
       dispatch(showSchool(props.location))
     } else {
       dispatch(hideSchool(props.location))
