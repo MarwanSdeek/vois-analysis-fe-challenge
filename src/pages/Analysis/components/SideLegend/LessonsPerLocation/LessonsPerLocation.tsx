@@ -14,19 +14,20 @@ type LessonsPerLocationProps = {
   selectable?: boolean
 }
 
+const INITIAL = true
+
 function LessonsPerLocation(props: LessonsPerLocationProps) {
-  const [isChecked, setIsChecked] = useState(true)
+  const [isChecked, setIsChecked] = useState(INITIAL)
   const dispatch = useAppDispatch()
 
   if (!hasLocation(props)) {
     return <></>
   }
 
-  function handleOnCheckboxChange() {
-    const newIsChecked = !isChecked
-    setIsChecked(newIsChecked)
+  function handleOnCheckboxChange(isChecked: boolean) {
+    setIsChecked(isChecked)
 
-    if (newIsChecked) {
+    if (isChecked) {
       dispatch(showSchool(props.location))
     } else {
       dispatch(hideSchool(props.location))
@@ -42,7 +43,7 @@ function LessonsPerLocation(props: LessonsPerLocationProps) {
       {props.selectable && (
         <CheckboxCol>
           <Checkbox
-            checked={isChecked}
+            initial={INITIAL}
             onChange={handleOnCheckboxChange}
             color={props.color}
           />
