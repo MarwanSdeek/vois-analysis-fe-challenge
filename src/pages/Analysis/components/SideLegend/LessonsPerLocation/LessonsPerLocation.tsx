@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { styled } from 'stitches.config'
 import { Flexbox, Text } from 'components/basic'
@@ -19,6 +19,14 @@ const INITIAL = true
 function LessonsPerLocation(props: LessonsPerLocationProps) {
   const [isChecked, setIsChecked] = useState(INITIAL)
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    return () => {
+      if (props.selectable && isChecked === false) {
+        dispatch(showSchool(props.location))
+      }
+    }
+  }, [dispatch, props.selectable, props.location, isChecked])
 
   if (!hasLocation(props)) {
     return <></>
