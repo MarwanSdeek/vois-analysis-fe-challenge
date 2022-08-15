@@ -7,7 +7,11 @@ import SchoolsDropdown from './SchoolsDropdown'
 
 function Filter() {
   return (
-    <Container flow={{ '@sm': 'column' }} main="spaceBetween" data-testid="filter">
+    <Container
+      flow={{ '@sm': 'column' }}
+      main="spaceBetween"
+      data-testid="filter"
+    >
       <CountriesDropdown />
       <CampsDropdown />
       <SchoolsDropdown />
