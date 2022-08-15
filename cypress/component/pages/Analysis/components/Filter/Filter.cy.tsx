@@ -1,5 +1,6 @@
 import Filter from '../../../../../../src/pages/Analysis/components/Filter'
 import store from '../../../../../../src/store'
+import { SHOW_ALL } from '../../../../../../src/queries/useSchoolsQuery'
 
 import { DropdownUtils } from '../../../../components/Dropdown.cy'
 import getQueryClient from '../../../../../utils/getQueryClient'
@@ -35,8 +36,12 @@ describe('Filter', () => {
 		utils.getCountryDropdown().within(utils.open)
 		utils.chooseOption(1);
 
-		utils.getCampDropdown().within(utils.isCleared)
-		utils.getSchoolDropdown().within(utils.isCleared)
+		utils.getCampDropdown().within(() => {
+			DropdownUtils.getValue().should('have.text', 'camp1')
+		})
+		utils.getSchoolDropdown().within(() => {
+			DropdownUtils.getValue().should('have.text', SHOW_ALL)
+		})
 	})
 })
 
@@ -48,6 +53,5 @@ const utils = {
 	getCampDropdown: () => DropdownUtils.getDropdown().eq(1),
 	getSchoolDropdown: () => DropdownUtils.getDropdown().eq(2),
 	open: () => DropdownUtils.getOpenDropdownBtn().click(),
-	chooseOption: (index: number) => DropdownUtils.getOptions().eq(index).click(),
-	isCleared: () => DropdownUtils.getValue().should('have.text', DropdownUtils.DEFAULT_PLACEHOLDER)
+	chooseOption: (index: number) => DropdownUtils.getOptions().eq(index).click()
 }
