@@ -1,5 +1,5 @@
-import NoResult from '../../../../../../src/pages/Analysis/components/SideLegend/NoResult'
-import { NO_DATA } from '../../../../../../src/constants/messages'
+import NoResult from 'src/pages/Analysis/components/SideLegend/NoResult'
+import { NO_DATA } from 'src/constants/messages'
 
 
 describe('NoResult', () => {

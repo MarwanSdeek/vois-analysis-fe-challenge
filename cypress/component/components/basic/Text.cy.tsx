@@ -1,5 +1,4 @@
-import { Text } from '../../../../src/components/basic'
-import { ViewportPreset } from 'cypress'
+import { Text } from 'src/components/basic'
 
 describe('Text', () => {
 	it('mount', () => {

@@ -1,11 +1,11 @@
 import { QueryClient } from 'react-query'
 
-import CountriesDropdown from '../../../../../../src/pages/Analysis/components/Filter/CountriesDropdown'
-import store from '../../../../../../src/store'
-import { getCountriesKey } from '../../../../../../src/cache/keys'
-import { selectCountry, countryChanged } from '../../../../../../src/store/analysisFilter'
+import CountriesDropdown from 'src/pages/Analysis/components/Filter/CountriesDropdown'
+import store from 'src/store'
+import { getCountriesKey } from 'src/cache/keys'
+import { selectCountry, countryChanged } from 'src/store/analysisFilter'
 
-import { DropdownUtils } from '../../../../components/Dropdown.cy'
+import { DropdownUtils } from 'test/components/Dropdown.cy'
 
 describe('CountriesDropdown', () => {
 	it('mount', () => {

@@ -2,7 +2,8 @@ import { mount } from 'cypress/react'
 import { MountOptions, MountReturn } from 'cypress/react'
 import { MemoryRouterProps } from 'react-router-dom'
 import { EnhancedStore } from '@reduxjs/toolkit'
-import { RootState } from '../../src/store/store'
+
+import { RootState } from 'src/store/store'
 
 import './commands'
 

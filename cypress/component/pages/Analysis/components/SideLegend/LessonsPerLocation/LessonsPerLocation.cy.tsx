@@ -1,7 +1,6 @@
-import store from '../../../../../../../src/store'
-import { selectHiddenSchools } from '../../../../../../../src/store/hiddenSchoolsOnChart'
-
-import LessonsPerLocation from '../../../../../../../src/pages/Analysis/components/SideLegend/LessonsPerLocation'
+import LessonsPerLocation from 'src/pages/Analysis/components/SideLegend/LessonsPerLocation'
+import store from 'src/store'
+import { selectHiddenSchools } from 'src/store/hiddenSchoolsOnChart'
 
 describe('LessonsPerLocation', () => {
 	it('mount', () => {

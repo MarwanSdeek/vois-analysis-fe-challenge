@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider as ReduxProvider } from 'react-redux'
 
-import store from '../../../src/store'
+import store from 'src/store'
 
 Cypress.Commands.add('mountWithAll', (component, options = {}) => {
 

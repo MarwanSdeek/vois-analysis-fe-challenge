@@ -1,11 +1,11 @@
 import { QueryClient } from 'react-query'
 
-import CampsDropdown from '../../../../../../src/pages/Analysis/components/Filter/CampsDropdown'
-import store from '../../../../../../src/store'
-import { getCampsKey } from '../../../../../../src/cache/keys'
-import { selectCamp, campChanged, countryChanged } from '../../../../../../src/store/analysisFilter'
+import CampsDropdown from 'src/pages/Analysis/components/Filter/CampsDropdown'
+import store from 'src/store'
+import { getCampsKey } from 'src/cache/keys'
+import { selectCamp, campChanged, countryChanged } from 'src/store/analysisFilter'
 
-import { DropdownUtils } from '../../../../components/Dropdown.cy'
+import { DropdownUtils } from 'test/components/Dropdown.cy'
 
 describe('CampsDropdown', () => {
 	it('mount', () => {

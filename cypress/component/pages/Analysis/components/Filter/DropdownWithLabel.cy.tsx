@@ -1,5 +1,6 @@
-import DropdownWithLabel from '../../../../../../src/pages/Analysis/components/Filter/DropdownWithLabel'
-import { DropdownUtils } from '../../../../components/Dropdown.cy'
+import DropdownWithLabel from 'src/pages/Analysis/components/Filter/DropdownWithLabel'
+
+import { DropdownUtils } from 'test/components/Dropdown.cy'
 
 
 describe('DropdownWithLabel', () => {

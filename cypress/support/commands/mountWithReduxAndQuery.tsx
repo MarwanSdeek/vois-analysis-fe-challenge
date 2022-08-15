@@ -2,7 +2,7 @@ import { mount } from 'cypress/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider as ReduxProvider } from 'react-redux'
 
-import store from '../../../src/store'
+import store from 'src/store'
 
 // Ref:https://docs.cypress.io/guides/component-testing/custom-mount-react#Redux
 Cypress.Commands.add('mountWithReduxAndQuery', (component, options = {}) => {

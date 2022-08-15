@@ -1,4 +1,4 @@
-import { Flexbox } from '../../../../src/components/basic'
+import { Flexbox } from 'src/components/basic'
 
 describe('Flexbox', () => {
 	it('mount', () => {

@@ -1,6 +1,6 @@
 import { QueryClient } from 'react-query'
 
-import createCacheInitializer from '../../src/cache/createCacheInitializer'
+import createCacheInitializer from 'src/cache/createCacheInitializer'
 
 import analysisRecords from '../fixtures/analysisRecords.json'
 
