@@ -1,9 +1,9 @@
-import store from '../../../../../../src/store'
-import { schoolChanged, campChanged, countryChanged } from '../../../../../../src/store/analysisFilter'
 
-import Chart from '../../../../../../src/pages/Analysis/components/Chart'
+import Chart from 'src/pages/Analysis/components/Chart'
+import store from 'src/store'
+import { schoolChanged, campChanged, countryChanged } from 'src/store/analysisFilter'
 
-import getQueryClient from '../../../../../utils/getQueryClient'
+import getQueryClient from 'utils/getQueryClient'
 
 describe('Chart', () => {
 	it('mount', () => {

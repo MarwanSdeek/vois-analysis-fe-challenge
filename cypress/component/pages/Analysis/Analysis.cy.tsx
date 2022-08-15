@@ -1,4 +1,4 @@
-import Analysis from '../../../../src/pages/Analysis'
+import Analysis from 'src/pages/Analysis'
 
 describe('Analysis page', () => {
 	it('mount', () => {

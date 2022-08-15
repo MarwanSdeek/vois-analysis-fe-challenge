@@ -1,4 +1,4 @@
-import Checkbox from '../../../../../../../src/pages/Analysis/components/SideLegend/LessonsPerLocation/Checkbox'
+import Checkbox from 'src/pages/Analysis/components/SideLegend/LessonsPerLocation/Checkbox'
 
 describe('Checkbox', () => {
 	it('mount', () => {

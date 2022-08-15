@@ -1,4 +1,4 @@
-import { Container } from '../../../../src/components/basic'
+import { Container } from 'src/components/basic'
 
 describe('Container', () => {
 	it('mount', () => {

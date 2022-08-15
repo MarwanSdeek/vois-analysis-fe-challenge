@@ -1,4 +1,4 @@
-import EntryDetails from '../../../../src/pages/EntryDetails'
+import EntryDetails from 'src/pages/EntryDetails'
 
 describe('EntryDetails page', () => {
 	it('mount', () => {

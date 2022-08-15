@@ -1,5 +1,5 @@
-import LineChart from '../../../src/components/LineChart'
-import type { Dataset } from '../../../src/components/LineChart'
+import LineChart from 'src/components/LineChart'
+import type { Dataset } from 'src/components/LineChart'
 
 
 describe('LineChart', () => {

@@ -1,4 +1,4 @@
-import { PageContainer } from '../../../../src/components/basic'
+import { PageContainer } from 'src/components/basic'
 
 describe('PageContainer', () => {
 	it('mount', () => {

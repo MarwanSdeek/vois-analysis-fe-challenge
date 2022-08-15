@@ -10,10 +10,15 @@
 			"@testing-library/cypress",
 			"./support/commands"
 		],
-		"baseUrl": "./",
+		"baseUrl": ".",
 		"jsx": "react-jsx",
 		"resolveJsonModule": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"paths": {
+			"utils/*": ["utils/*"],
+			"src/*": ["../src/*"],
+			"test/components/*": ["component/components/*"]
+		}
 	},
 	"include": [
 		"**/*.ts",

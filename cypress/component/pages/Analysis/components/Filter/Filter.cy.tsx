@@ -1,9 +1,9 @@
-import Filter from '../../../../../../src/pages/Analysis/components/Filter'
-import store from '../../../../../../src/store'
-import { SHOW_ALL } from '../../../../../../src/queries/useSchoolsQuery'
+import Filter from 'src/pages/Analysis/components/Filter'
+import store from 'src/store'
+import { SHOW_ALL } from 'src/queries/useSchoolsQuery'
 
-import { DropdownUtils } from '../../../../components/Dropdown.cy'
-import getQueryClient from '../../../../../utils/getQueryClient'
+import { DropdownUtils } from 'test/components/Dropdown.cy'
+import getQueryClient from 'utils/getQueryClient'
 
 describe('Filter', () => {
 	it('mount', () => {

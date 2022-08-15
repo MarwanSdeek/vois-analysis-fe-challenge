@@ -1,12 +1,12 @@
 import { QueryClient } from 'react-query'
 
-import SchoolsDropdown from '../../../../../../src/pages/Analysis/components/Filter/SchoolsDropdown'
-import store from '../../../../../../src/store'
-import { getSchoolsKey } from '../../../../../../src/cache/keys'
-import { selectSchool, schoolChanged, campChanged, countryChanged } from '../../../../../../src/store/analysisFilter'
-import { SHOW_ALL } from '../../../../../../src/queries/useSchoolsQuery'
+import SchoolsDropdown from 'src/pages/Analysis/components/Filter/SchoolsDropdown'
+import store from 'src/store'
+import { getSchoolsKey } from 'src/cache/keys'
+import { selectSchool, schoolChanged, campChanged, countryChanged } from 'src/store/analysisFilter'
+import { SHOW_ALL } from 'src/queries/useSchoolsQuery'
 
-import { DropdownUtils } from '../../../../components/Dropdown.cy'
+import { DropdownUtils } from 'test/components/Dropdown.cy'
 
 describe('SchoolsDropdown', () => {
 	it('mount', () => {

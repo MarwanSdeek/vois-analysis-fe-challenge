@@ -1,4 +1,4 @@
-import Dropdown, { DEFAULT_CLASS_NAME_PREFIX } from '../../../src/components/Dropdown'
+import Dropdown, { DEFAULT_CLASS_NAME_PREFIX } from 'src/components/Dropdown'
 
 describe('Dropdown', () => {
 	it('mount', () => {

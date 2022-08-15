@@ -1,11 +1,12 @@
-import store from '../../../../../../src/store'
-import { schoolChanged, campChanged, countryChanged } from '../../../../../../src/store/analysisFilter'
-import { NO_DATA } from '../../../../../../src/constants/messages'
-import { SHOW_ALL } from '../../../../../../src/queries/useSchoolsQuery'
+import SideLegend from 'src/pages/Analysis/components/SideLegend'
+import store from 'src/store'
+import { schoolChanged, campChanged, countryChanged } from 'src/store/analysisFilter'
+import { NO_DATA } from 'src/constants/messages'
+import { SHOW_ALL } from 'src/queries/useSchoolsQuery'
 
-import SideLegend from '../../../../../../src/pages/Analysis/components/SideLegend'
 
-import getQueryClient from '../../../../../utils/getQueryClient'
+
+import getQueryClient from 'utils/getQueryClient'
 
 describe('SideLegend', () => {
 	it('no data', () => {
